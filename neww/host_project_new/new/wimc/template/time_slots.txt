@@ -1,0 +1,455 @@
+
+if a parking place has 24 hours working time...
+            24/2=12
+
+                00:00 - 02:00        [  10  ]
+                02:00 - 04:00        [  10  ]
+                04:00 - 06:00        [  10  ]
+                06:00 - 08:00        [  10  ]
+      -2        08:00 - 10:00        [   8  ]
+      -3        10:00 - 12:00        [   7  ]
+      -4        12:00 - 02:00        [   6  ]
+      -5        02:00 - 04:00        [   5  ]
+      -4        04:00 - 06:00        [   6  ]
+      -3        06:00 - 08:00        [   7  ]
+      -2        08:00 - 10:00        [   8  ]
+                10:00 - 12:00        [  10  ]
+
+if a parking place has 10 parking slots...
+            12*10=120
+
+if a Charging station has 24 hours working time...
+            24/2=12
+
+                00:00 - 02:00        [  3  ]
+                02:00 - 04:00        [  3  ]
+                04:00 - 06:00        [  3  ]
+                06:00 - 08:00        [  2  ]
+                08:00 - 10:00        [  1  ]
+      -3        10:00 - 12:00        [  0  ]
+      -4        12:00 - 02:00        [  0  ]
+      -5        02:00 - 04:00        [  0  ]
+      -4        04:00 - 06:00        [  1  ]
+      -3        06:00 - 08:00        [  2  ]
+                08:00 - 10:00        [  3  ]
+                10:00 - 12:00        [  3  ]
+
+if a Charging station has 3 parking slots...
+            12*3=36
+
+(s_name=a, cname=b, prof_pic=c, job_desc=d, s_ph_no=e, c_email=f, c_location=g, s_email=h, s_password=i)
+
+
+
+
+
+
+                01:00 AM - 02:00 AM
+                02:00 AM - 03:00 AM
+                03:00 AM - 04:00 AM
+                04:00 AM - 05:00 AM
+                05:00 AM - 06:00 AM
+                06:00 AM - 07:00 AM
+                07:00 AM - 08:00 AM
+                08:00 AM - 09:00 AM
+                09:00 AM - 10:00 AM
+                10:00 AM - 11:00 AM
+                11:00 AM - 12:00 PM
+                12:00 PM - 01:00 PM
+                01:00 PM - 02:00 PM
+                02:00 PM - 03:00 PM
+                03:00 PM - 04:00 PM
+                04:00 PM - 05:00 PM
+                05:00 PM - 06:00 PM
+                06:00 PM - 07:00 PM
+                07:00 PM - 08:00 PM
+                08:00 PM - 09:00 PM
+                09:00 PM - 10:00 PM
+                10:00 PM - 11:00 PM
+                11:00 PM - 12:00 AM
+                12:00 AM - 01:00 AM
+
+<option></option>
+
+
+<option>  01:00 AM - 02:00 AM</option>
+<option>  02:00 AM - 03:00 AM</option>
+<option>  03:00 AM - 04:00 AM</option>
+<option>  04:00 AM - 05:00 AM</option>
+<option>  05:00 AM - 06:00 AM</option>
+<option>  06:00 AM - 07:00 AM</option>
+<option>  07:00 AM - 08:00 AM</option>
+<option>  08:00 AM - 09:00 AM</option>
+<option>  09:00 AM - 10:00 AM</option>
+<option>  10:00 AM - 11:00 AM</option>
+<option>  11:00 AM - 12:00 PM</option>
+<option>  12:00 PM - 01:00 PM</option>
+<option>  01:00 PM - 02:00 PM</option>
+<option>  02:00 PM - 03:00 PM</option>
+<option>  03:00 PM - 04:00 PM</option>
+<option>  04:00 PM - 05:00 PM</option>
+<option>  05:00 PM - 06:00 PM</option>
+<option>  06:00 PM - 07:00 PM</option>
+<option>  07:00 PM - 08:00 PM</option>
+<option>  08:00 PM - 09:00 PM</option>
+<option>  09:00 PM - 10:00 PM</option>
+<option>  10:00 PM - 11:00 PM</option>
+<option>  11:00 PM - 12:00 AM</option>
+<option>  12:00 AM - 01:00 AM</option>
+
+
+class Time_slot(models.Model):
+    user_details=models.ForeignKey(parker,on_delete=models.CASCADE)
+    date =models.TextField(max_length=30)
+    time_slot=models.IntegerField()
+
+    <!-- ##### Book Now Area Start ##### -->
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="text-center wow fadeInUp">
+                <div class="col-lg-3 col-md-6 wow fadeInUp">
+                    <div class="form-control">
+                        <form action="#">
+                            <!-- Form Group -->
+                            <div class="form-group">
+                                <label>Check In date</label>
+                                <input class="form-control" name="date" type="date">
+                            </div>
+                            <!-- Form Group -->
+                            <div class="form-group">
+                                <label>Time</label>
+                                <select class="form-control" name="time_slot">
+                                    <option value="1">  01:00 AM - 02:00 AM</option>
+                                    <option value="2">  02:00 AM - 03:00 AM</option>
+                                    <option value="3">  03:00 AM - 04:00 AM</option>
+                                    <option value="4">  04:00 AM - 05:00 AM</option>
+                                    <option value="5">  05:00 AM - 06:00 AM</option>
+                                    <option value="6">  06:00 AM - 07:00 AM</option>
+                                    <option value="7">  07:00 AM - 08:00 AM</option>
+                                    <option value="8">  08:00 AM - 09:00 AM</option>
+                                    <option value="9">  09:00 AM - 10:00 AM</option>
+                                    <option value="10">  10:00 AM - 11:00 AM</option>
+                                    <option value="11">  11:00 AM - 12:00 PM</option>
+                                    <option value="12">  12:00 PM - 01:00 PM</option>
+                                    <option value="13">  01:00 PM - 02:00 PM</option>
+                                    <option value="14">  02:00 PM - 03:00 PM</option>
+                                    <option value="15">  03:00 PM - 04:00 PM</option>
+                                    <option value="16">  04:00 PM - 05:00 PM</option>
+                                    <option value="17">  05:00 PM - 06:00 PM</option>
+                                    <option value="18">  06:00 PM - 07:00 PM</option>
+                                    <option value="19">  07:00 PM - 08:00 PM</option>
+                                    <option value="20">  08:00 PM - 09:00 PM</option>
+                                    <option value="21">  09:00 PM - 10:00 PM</option>
+                                    <option value="22">  10:00 PM - 11:00 PM</option>
+                                    <option value="23">  11:00 PM - 12:00 AM</option>
+                                    <option value="24">  12:00 AM - 01:00 AM</option>
+                                </select>
+                            </div>
+                            <!-- Button -->
+                            <button type="submit">Check Availability</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ##### Book Now Area End ##### -->
+
+############################################################################################################
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body ng-app="">
+
+Show HTML: <input type="checkbox" ng-model="myVar">
+
+<div ng-show="myVar">
+<h5>Parking<input type="number" value="2" name="pname"></h5>
+</div>
+
+</body>
+</html>
+
+output
+
+Show HTML:
+Parking
+2
+####################################################################################
+
+
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="namesCtrl">
+
+<p>Type a letter in the input field:</p>
+
+<p><input type="text" ng-model="test"></p>
+
+<ul>
+  <li ng-repeat="x in names | filter:test">
+    {{ x }}
+  </li>
+</ul>
+
+</div>
+
+<script>
+angular.module('myApp', []).controller('namesCtrl', function($scope) {
+    $scope.names = [
+        'jan 28',
+        'Carl',
+        'feb 28',
+        'Hege',
+        'Joe',
+        'Gustav',
+        'Birgit',
+        'Mary',
+        'Kai'
+    ];
+});
+</script>
+
+<p>The list will only consists of names matching the filter.</p>
+
+
+</body>
+</html>
+################################################################################################
+
+                                <form>
+                                  <label for="start_time">Start Time:</label><br>
+                                  <input type="time" id="start_time"><br>
+                                  <label for="end_time">End Time:</label><br>
+                                  <input type="time" id="end_time" name="end_time"><br>
+                                  <label for="total_hours">Total Hours:</label><br>
+                                  <input type="text" id="total_hours" name="total_hours" readonly><br>
+                                  <input type="button" value="Calculate" onclick="calculateHours()">
+                                </form>
+<script>
+var app = angular.module('timeApp', []);
+app.controller('timeCtrl', function($scope) {
+    $scope.calculateHours = function() {
+        var start = new Date("01/01/2007 " + $scope.startTime);
+        var end = new Date("01/01/2007 " + $scope.endTime);
+        if(end >= start) {
+            var diff = end - start;
+            var hours = Math.floor(diff / 1000 / 60 / 60);
+            diff -= hours * 1000 * 60 * 60;
+            var minutes = Math.floor(diff / 1000 / 60);
+            $scope.totalHours = hours + ":" + minutes;
+        } else {
+            alert("End time must be later than start time.");
+        }
+    };
+});
+</script>
+##########################################################################################################
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+<div ng-app="timeApp" ng-controller="timeCtrl">
+
+  <label for="start_time">Start Time:</label><br>
+  <input type="time" id="start_time" ng-model="startTime"><br>
+  <label for="end_time">End Time:</label><br>
+  <input type="time" id="end_time" ng-model="endTime"><br>
+  <label for="total_hours">Total Hours:</label><br>
+  <input type="text" id="total_hours" ng-model="totalHours" readonly><br>
+  <button ng-click="calculateHours()">Calculate</button>
+
+</div>
+
+<script>
+var app = angular.module('timeApp', []);
+app.controller('timeCtrl', function($scope) {
+    $scope.calculateHours = function() {
+        var start = new Date("01/01/2007 " + $scope.startTime);
+        var end = new Date("01/01/2007 " + $scope.endTime);
+        if(end >= start) {
+            var diff = end - start;
+            var hours = Math.floor(diff / 1000 / 60 / 60);
+            diff -= hours * 1000 * 60 * 60;
+            var minutes = Math.floor(diff / 1000 / 60);
+            $scope.totalHours = hours + ":" + minutes;
+        } else {
+            alert("End time must be later than start time.");
+        }
+    };
+});
+</script>
+
+</body>
+</html>
+
+
+###################################################################################################################
+
+Sure, here's a description for such a website:
+
+**ParkEase: Your One-Stop Parking Solution**
+
+Welcome to ParkEase, the ultimate platform for all your parking needs. We offer a seamless and hassle-free parking booking experience for malls, airports, EV charging stations, railway stations, and more.
+
+With ParkEase, you can pre-book your parking spot at any location, ensuring you have a reserved space waiting for you when you arrive. Say goodbye to the stress of finding a parking spot at the last minute!
+
+Our services extend to various locations including:
+- **Mall Parking**: Enjoy your shopping spree without worrying about parking. Reserve your spot in advance and have more time for what truly matters - shopping!
+- **Airport Parking**: Make your travel smoother with our airport parking service. Pre-book your parking spot and focus on your journey, not the parking.
+- **EV Charging Station Booking**: We support the green initiative! Book your EV charging slot in advance and ensure your vehicle is always ready to go.
+- **Railway Station Parking**: Catching a train? Reserve your parking spot at the railway station and make your commute stress-free.
+
+At ParkEase, we believe in making parking easy and convenient for everyone. Join us and experience the future of parking today!
+
+
+ParkEase: Your One-Stop Parking Solution
+
+Welcome to ParkEase, the ultimate platform for all your parking needs. We offer a seamless and hassle-free parking booking experience for malls, airports, EV charging stations, railway stations, and more.
+
+With ParkEase, you can pre-book your parking spot at any location, ensuring you have a reserved space waiting for you when you arrive. Say goodbye to the stress of finding a parking spot at the last minute!
+
+Our services extend to various locations including:
+
+Mall Parking: Enjoy your shopping spree without worrying about parking. Reserve your spot in advance and have more time for what truly matters - shopping!
+Airport Parking: Make your travel smoother with our airport parking service. Pre-book your parking spot and focus on your journey, not the parking.
+EV Charging Station Booking: We support the green initiative! Book your EV charging slot in advance and ensure your vehicle is always ready to go.
+Railway Station Parking: Catching a train? Reserve your parking spot at the railway station and make your commute stress-free.
+At ParkEase, we believe in making parking easy and convenient for everyone. Join us and experience the future of parking today!
+
+
+
+def read(req,id):
+    data=petregister.objects.get(pk=id)
+    return render(req,'userhome/read.html',{'data':data})
+
+def bookdtls(req, id):
+    if req.method == "POST":
+        pet = petregister.objects.get(pk=id)
+        user = petuser.objects.get(Username=req.session['user'])
+        user.Name = req.POST['name']
+        Address = req.POST['address']
+        user.Email = req.POST['Email']
+        user.Mobileno = req.POST['mobileno']
+        price=pet.Price
+        data = booking.objects.create(Name=user.Name, Address=Address, Email=user.Email, Mobileno=user.Mobileno, pet=pet, user=user)
+        data.save()
+        am=pet.stock -1
+        petregister.objects.filter(pk=id).update(stock=am)
+        messages.success(req, 'saved')
+        return redirect('payment',price=price)
+    else:
+        user = petuser.objects.get(Username=req.session['user'])
+        return render(req, 'userhome/bookingdetails.html',{'user':user})
+
+
+
+###################################################################################################################
+
+        <!-- Company profile Start -->
+
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h1 class="mb-5">Company Profile</h1>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                    <div class="price-item">
+                        <div class="p-4 pt-3">
+                            <div class="border-bottom p-4 mb-4">
+                                <h4 class="text-success me-3">About Company</h4>
+                                <p><i class="fa fa-quote-left text-success me-3"></i>{{data2.c_desc}} <i class="fa fa-quote-right text-success me-3"></i>by {{data2.cname}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                    <div class="price-item">
+                        <div class="border-bottom p-4 mb-4">
+                                <img src={{data2.c_logo.url}} class="img-fluid flex-shrink-100" style="width: 160px; height: 160px;" data-wow-delay="0.5s"></h5>
+                            <h1 class="display-5 mb-0">
+                                <small class="align-top" style="font-size: 22px; line-height: 45px;"></small> {{data2.cname}}
+                                <small class="fa fa-building"> </small><small style="font-size: 20px; line-height: 40px;" class="text-success fa fa-car"></small><br><small
+                                    class="fa fa-map-marker text-primary align-bottom" style="font-size: 20px; line-height: 40px;"> {{data2.c_location}}</small><br>
+                                <small class="fa fa-car text-success me-3" style="font-size: 25px; line-height: 45px;"> {{data2.park_option}}</small>
+                            </h1>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 wow fadeInUp" data-wow-delay="0.7s">
+                    <div class="price-item">
+                        <div class="p-4 pt-3">
+                            <br><br>
+                            <h4 class="fa fa-clock text-primary me-3"> Working Hours</h4>
+                            <p><i class="fa fa-check text-success me-3"></i>Opening:  {{data2.timeA}}</p>
+                            <p><i class="fa fa-check text-success me-3"></i>Closing:  {{data2.timeZ}}</p>
+                            <h4 class="text-secondary me-3">Contact info</h4>
+                            <p><i class="fa fa-phone text-success me-3"></i>Phone: {{data2.c_ph_no}}</p>
+                            <p><i class="fa fa-envelope text-primary me-3"></i>Email: {{data2.c_email}}</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="text-secondary text-uppercase">Parking</h6>
+                <h1 class="mb-5">{{data2.cname}} Parking Lots </h1>
+            </div>
+            <div class="container container-hover" border="0">
+                <div class="row g-4">
+                    {% for i in data1 %}
+                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="team-item p-4">
+                            <div class="overflow-hidden mb-4">
+                            </div>
+                            <h3 class="mb-0">{{i.park_date}}</h3>
+                            {% if i.stock_item <= 0 %}
+
+                                <h4 class="text-success m-0">Price : {{i.park_price}}</h4>
+                                <h4 class="text-primary m-0">Out of Slots</h4>
+                                <a href="" class="btn btn-outline-primary text- mt-2">Unavailable</a>
+                            {% for i in data3 %}
+                            <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                                <div class="team-item p-4">
+                                    <div class="overflow-hidden mb-4">
+                                    </div>
+                                    <h3 class="mb-0">{{i.park_date}}</h3>
+                            {% if i.user_details.park_details.park_date == i.user_details.park_details.park_date %}
+                                <h4 class="text-success m-0">Price : {{i.park_price}}</h4>
+                                <h4 class="text-primary m-0">Already Booked</h4>
+                                <a href="" class="btn btn-outline-info text- mt-2">Booked</a>
+                            {% else %}
+
+                                <h4 class="text-success m-0">Price : {{i.park_price}}</h4>
+                                <h4 class="text-success m-0">Slots : {{ i.stock_item }}</h4>
+                                <a href="buy_conv_parking/{{i.pk}}" class="btn btn-outline-warning text- mt-2">Pre-book</a>
+                            {% endif %}
+                            {% endfor %}
+
+                            {% else %}
+
+                                <h4 class="text-success m-0">Price : {{i.park_price}}</h4>
+                                <h4 class="text-success m-0">Slots : {{ i.stock_item }}</h4>
+                                <a href="buy_conv_parking/{{i.pk}}" class="btn btn-outline-warning text- mt-2">Pre-book</a>
+                            {% endif %}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Company profile End -->
+
+
+
+
+
+

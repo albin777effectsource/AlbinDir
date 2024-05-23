@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <title>To Buy Item</title>
+    <!-- Include jQuery and AngularJS libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+
+</head>
+<body>
+
+
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
+        <a href="" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
+            <h5 class="text-white text-uppercase mb-3 animated slideInDown">{{data1.name}} </h5>
+            <h2 class="mb-2 text-white">Where is My Car?</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="../../../user_index" class="nav-item nav-link active"><i class="fa fa-home"></i> Home</a>
+                <a href="../../../user_conv_parking_view" class="nav-item nav-link"><i class="fa fa-car"></i> Car Parking</a>
+                <a href="../../../user_conv_booked_details" class="nav-item nav-link"><i class="fa fa-list"></i> Booked Details</a>
+                                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu fade-up m-0">
+                        <a href="#" class="dropdown-item">error page</a>
+                    </div>
+                </div>
+                <a href="../../../login" class="nav-item nav-link active"><h5 class="text-primary m-0">LogOut</h5></a>
+            </div>
+            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-headphones text-primary me-3"></i> {{data.ph_no}}</h4>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+    <!-- Book slot start -->
+    <div ng-app="myApp" ng-init="prc={{data.item_price}};stock=0;">
+        <div ng-controller="myCtrl">
+            <div class="container-fluid overflow-hidden py-5 px-lg-0">
+                <div class="container contact-page py-5 px-lg-0">
+                    <div class="row g-5 mx-lg-0">
+                        <div class="col-md-6 contact-form wow fadeIn" data-wow-delay="0.1s">
+                            <h6 class="text-secondary text-uppercase">Get An Account</h6>
+                            <h2 class="mb-4">Continue Booking {{data.park_name}} Here</h2>
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                      <div class="alert alert-success alert-dismissible"  {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                                        <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                        <strong>{{ message }}</strong>
+                                      </div>
+                                    {% endfor %}
+                                    {% endif %}
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <div ng-app="" ng-init="prc={{data.park_price}};stock=0;">
+                                    <div class="bg-light p-4">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input type="number" class="form-control" name="phone" value="{{data1.ph_no}}" required>
+                                                    <label>User Contact number</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input type="email" class="form-control" name="email" value="{{data1.email}}" required>
+                                                    <label>User Contact Email</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-select border-1">
+                                                    <p><strong>Select number of Slots </strong></p>
+                                                    <h3>
+                                                    <label class="checkbox-inline">
+                                                        <input type="radio" value="1" name="stock" ng-model="stock"><b class="text-primary">1</b><b class="fa fa-car" style="font-size: 20px; line-height: 40px;"></b>
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="radio" value="2" name="stock" ng-model="stock"><b class="text-primary">2</b><b class="fa fa-car" style="font-size: 20px; line-height: 40px;"></b><b class="fa fa-car" style="font-size: 20px; line-height: 40px;"></b>
+                                                    </label>
+                                                    <label class="checkbox-inline">
+                                                        <input type="radio" value="3" name="stock" ng-model="stock"><b class="text-primary">3</b><b class="fa fa-car" style="font-size: 20px; line-height: 40px;"></b><b class="fa fa-bus" style="font-size: 20px; line-height: 40px;"></b><b class="fa fa-truck" style="font-size: 20px; line-height: 40px;"></b>
+                                                    </label>
+                                                    </h3>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input type="number" class="form-control" name="price" ng-value="(prc * stock )" readonly>
+                                                    <label>Total price</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <input type="text" class="form-control" name="park_date" value="{{data.park_date}}" readonly>
+                                                    <label>Parking Date</label>
+                                                </div>
+                                            </div>
+                                        {% if data.stock_item <= 0 %}
+                                        <h4 class="text-primary m-0">Out of Slots</h4>
+                                        <a href="" class="btn btn-outline-primary text- mt-2">Unavailable</a>
+                                        {% else %}
+                                        <button class="btn btn-outline-primary mt-2" type="submit">Book parking slot</button>
+                                            <div class="col-md-6">
+                                                <div class="form-floating">
+                                                    <a href="../../../user_conv_parking_view" class="btn btn-outline-success mt-2"><i class="fa fa-car"></i> Go back to parkings </a>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 contact-form wow fadeIn" data-wow-delay="0.1s">
+                            <h6 class="text-secondary text-uppercase">info</h6>
+                            <h2 class="mb-4">{{data.company_details}} Details</h2>
+                            <div class="bg-light p-4 align-items-center px-4 px-lg-5">
+                                <h1 class="mb-1 text-primary">{{data.park_name}} <strong style="font-size: 20px; line-height: 40px;" class="text-success">{{data.park_c_location}}</strong></h1>
+                                <p class="mb-0"> Date : <strong class="text-success mb-0" style="font-size: 27px; line-height: 27px;">{{data.park_date}} </strong></h3> <h3 class="text-success mb-0" style="font-size: 20px; line-height: 40px;"> for <strong class="text-primary mb-0" style="font-size: 27px; line-height: 27px;">{{data.park_price}} </strong>rupees &</h3>
+                                <p class="mb-0"><strong class="mb-0 text-secondary" style="font-size: 20px; line-height: 40px;">Total slots: <strong class="text-success mb-0" style="font-size: 27px; line-height: 5px;">{{data.stock_item}}</strong></strong></p>
+                                <p class="mb-0"><strong class="mb-0 text-secondary" style="font-size: 20px; line-height: 40px;">Email: <strong class="text-success mb-0" style="font-size: 18px; line-height: 5px;">{{data.park_email}}</strong></strong></p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Book slot end -->
+
+
+
+
+
+
+<script>
+var app = angular.module('company_register', []);
+app.controller('validateCtrl', function($scope) {
+    $scope.company = '';
+    $scope.company_email = '';
+});
+</script>
+
+    <script>
+        // Create a module named myApp
+        var app = angular.module('myApp', []);
+        // Create a controller named myCtrl for the module
+        app.controller('myCtrl', function($scope) {
+            // No need to define any logic here, as the form is handled by AngularJS data binding and expressions
+        });
+    </script>
+
+
+
+
+
+</body>
+</html>

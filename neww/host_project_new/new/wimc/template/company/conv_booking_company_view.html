@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <title>Logistica - Shipping Company Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#myTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+
+
+
+<style>
+
+</style>
+</head>
+
+<body>
+
+    <!-- message Start -->
+
+{% if messages %}
+{% for message in messages %}
+  <div class="alert alert-success alert-dismissible"  {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+    <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>{{ message }}</strong>
+  </div>
+{% endfor %}
+{% endif %}
+
+    <!-- message End -->
+
+    <!-- Spinner Start -->
+<!--    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">-->
+<!--        <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">-->
+<!--            <span class="sr-only">Loading...</span>-->
+<!--        </div>-->
+<!--    </div>-->
+    <!-- Spinner End -->
+<!--<a id="id" name="c_email"><a/>-->
+
+
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow border-top border-5 border-primary sticky-top p-0">
+        <a href="" class="navbar-brand bg-primary d-flex align-items-center px-4 px-lg-5">
+            <h5 class="text-white text-uppercase mb-3 animated slideInDown"><img src={{data.c_logo.url}} class="img-fluid flex-shrink-100" style="width: 60px; height: 60px;" data-wow-delay="0.5s"></h5>
+            <h2 class="mb-2 text-white">Where is My Car?</h2>
+        </a>
+        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto p-4 p-lg-0">
+                <a href="../company_index" class="nav-item nav-link active"><i class="fa fa-home"></i> Home</a>
+                <a href="../conv_parking_company_view" class="nav-item nav-link"><i class="text-success fa fa-car"></i>  Parking</a>
+
+                <a href="../our_staff" class="nav-item nav-link"><i class="text-success fa fa-id-card"></i> Staff</a>
+<!--                <a href="../view_company_img" class="nav-item nav-link">View image</a>-->
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-book"></i> Pages</a>
+                    <div class="dropdown-menu fade-up m-0">
+
+
+                    </div>
+                </div>
+                <a href="../login" class="nav-item nav-link active"><h5 class="text-primary m-0">LogOut <i class="fa fa-arrow-left"></i></h5></a>
+            </div>
+            <h4 class="m-0 pe-lg-5 d-none d-lg-block"><i class="fa fa-phone text-primary me-1"></i>+91 {{data.c_ph_no}}</h4>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+
+
+
+<!-- search table Booking at specific company Details Start -->
+    <div class="container-xxl py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-15 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="row g-0">
+                        <h1 class="mb-5">Parking Bookings of {{data.cname}}  <img src={{data.c_logo.url}} class="img-fluid flex-shrink-100" style="width: 100px; height: 100px;" data-wow-delay="0.5s"></h1>
+                        <input id="myInput" class="form-control"  type="text" placeholder="Search..">
+                        <br><br>
+                        <form>
+                        <table class="table table-hover" border="1">
+                          <thead>
+                              <tr>
+                                <th> User Name    </th>
+                                <th> Parking Price   </th>
+                                <th> Parking Slots selected</th>
+                                <th> Parking date </th>
+                                <th> Email sent @ </th>
+                                  <th> User phone </th>
+                                <th> Company Name</th>
+                              </tr>
+                          </thead>
+                          <tbody id="myTable">
+                              {% for j in data1 %}
+                          <div style="float:left">
+                              <tr>
+                                  <td><h5>{{j.user_details}}      </h5></td>
+                                  <td><h5>{{j.park_price}} </h5></td>
+                                  <td><h5>{{j.no_slots}}</h5></td>
+                                  <td><p>{{j.park_date}}</p></td>
+                                  <td><p>{{j.Email}}</p></td>
+                                  <td><p>{{j.phone_no}}</p></td>
+                                  <td><p>{{j.park_details}}</p></td>
+                              </tr>
+                          </div>
+                        {% endfor %}
+                          </tbody>
+                        </table>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--  search table Booking at specific company Details End -->
+
+
+
+</body>
+</html>
